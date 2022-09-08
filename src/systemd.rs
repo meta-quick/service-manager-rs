@@ -161,7 +161,7 @@ impl ServiceManager for SystemdServiceManager {
         let script_name = ctx.label.to_script_name();
         let script_path = dir_path.join(format!("{script_name}.service"));
 
-        systemctl("disable", script_path.to_string_lossy().as_ref(), self.user)?;
+        systemctl("disable", script_name.to_string_lossy().as_ref(), self.user)?;
         std::fs::remove_file(script_path)
     }
 
