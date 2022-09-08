@@ -149,7 +149,7 @@ impl ServiceManager for SystemdServiceManager {
             SERVICE_FILE_PERMISSIONS,
         )?;
 
-        systemctl("enable", script_path.to_string_lossy().as_ref(), self.user)
+        systemctl("enable", format!("{script_name}.service").as_str(), self.user)
     }
 
     fn uninstall(&self, ctx: ServiceUninstallCtx) -> io::Result<()> {
